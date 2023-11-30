@@ -38,7 +38,7 @@ export function InfoPanel({ variant = "info", children, className }: Props) {
   return (
     <div
       className={cx(
-        "flex flex-row items-center px-2 py-1 rounded-md",
+        "flex flex-row items-center px-2 py-1 rounded-md w-fit",
         VARIANTS[variant].container,
         className
       )}

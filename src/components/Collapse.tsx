@@ -6,12 +6,13 @@ import { ChevronDownIcon } from "@heroicons/react/24/solid";
 interface Props {
   children: React.ReactNode;
   title: string;
+  className?: string;
 }
 
-export default function Collapse({ children, title }: Props) {
+export default function Collapse({ children, title, className }: Props) {
   const { getCollapseProps, getToggleProps, isExpanded } = useCollapse();
   return (
-    <div className="w-full  rounded-md p-2 border border-slate-300">
+    <div className={className}>
       <button
         {...getToggleProps()}
         className="w-full flex justify-between items-center"
