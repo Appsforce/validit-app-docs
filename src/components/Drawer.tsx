@@ -1,5 +1,6 @@
 import React from "react";
 import Collapse from "./Collapse";
+import { ArrowLeftOnRectangleIcon } from "@heroicons/react/24/outline";
 
 const NAV_ITEMS = [
   {
@@ -75,9 +76,9 @@ const NAV_ITEMS = [
 
 export default function Drawer() {
   return (
-    <div className="fixed left-0 h-screen bg-slate-100 w-52 p-2">
-      <h1 className="font-bold text-xl">Validit app docs</h1>
-      <ul className="flex flex-col gap-2 mt-2">
+    <div className="fixed left-0 h-screen bg-slate-100 w-52 p-2 flex flex-col">
+      <h1 className="font-bold text-xl flex-0">Validit app docs</h1>
+      <ul className="flex flex-col gap-2 mt-2 flex-1">
         {NAV_ITEMS.map((item) => {
           return (
             <li>
@@ -108,6 +109,16 @@ export default function Drawer() {
           );
         })}
       </ul>
+      <button
+        onClick={() => {
+          localStorage.removeItem("isAuth");
+          window.location.reload();
+        }}
+        className="self-start flex items-center justify-between w-full px-2 hover:bg-slate-300 rounded-lg py-1"
+      >
+        Log out
+        <ArrowLeftOnRectangleIcon className="w-6" />
+      </button>
     </div>
   );
 }

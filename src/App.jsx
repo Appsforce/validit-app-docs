@@ -2,8 +2,22 @@ import { ArrowsUpDownIcon } from "@heroicons/react/24/outline";
 import { CodeBlock } from "./components/CodeBlock";
 import Drawer from "./components/Drawer";
 import { InfoPanel } from "./components/InfoPanel";
-
+import AuthModal from "./components/AuthModal";
+import { useEffect } from "react";
+import React from "react";
 function App() {
+  // eslint-disable-next-line no-undef
+  const [isAuthenticated, setIsAuthenticated] = React.useState(false);
+
+  useEffect(() => {
+    // eslint-disable-next-line no-undef
+    const isAuth = localStorage.getItem("isAuth");
+    if (isAuth) {
+      setIsAuthenticated(true);
+    }
+  }, []);
+
+  if (!isAuthenticated) return <AuthModal />;
   return (
     <div className="w-screen h-screen overflow-x-hidden">
       <Drawer />
@@ -180,7 +194,6 @@ function App() {
         <h3 className="font-bold text-2xl" id="deployment-stage-ios">
           iOS
         </h3>
-
         <ul className="list-decimal list-inside space-y-2">
           <li>In root console</li>
           <CodeBlock copyText="npm version patch">
@@ -327,6 +340,16 @@ function App() {
           </li>
           <li>full rollout</li>
         </ul>
+        <hr className="my-4" />
+        <h2 className="text-4xl font-bold">Troubleshooting</h2>
+        <h3 className="text-2xl font-bold" id="troubleshooting-android">
+          Android
+        </h3>
+        TBW
+        <h3 className="text-2xl font-bold" id="troubleshooting-ios">
+          iOS
+        </h3>
+        TBW
       </div>
     </div>
   );
