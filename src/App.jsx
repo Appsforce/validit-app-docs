@@ -36,7 +36,7 @@ function App() {
         </h2>
         <ul className="list-disc list-inside" id="prereq-a">
           <li>Xcode</li>
-          <li>Cocoapod</li>
+          <li>Cocoapods</li>
           <li>Android studio</li>
           <li>Node</li>
           <li>App center cli</li>
@@ -277,13 +277,39 @@ function App() {
             <PreviewLink imageUrl="archive.png">archive</PreviewLink>
           </li>
           <li>
-            Once archive is done, an organizer window should pop up, if it
-            doesn’t, go to the top menu, Window → Organizer ( or ⎇⇧⌘O )
+            Once archive is done, an{" "}
+            <PreviewLink imageUrl="organizer.png">organizer</PreviewLink> window
+            should pop up, if it doesn’t, go to the top menu,{" "}
+            <PreviewLink imageUrl="organizer-menu.png">
+              Window → Organizer
+            </PreviewLink>
+            ( or ⎇⇧⌘O )
           </li>
-          <li>Select the top option ( latest build )</li>
-          <li>click Distribute app on the right</li>
-          <li>Select TestFlight Internal Only</li>
-          <li>Distribute</li>
+          <li>
+            Select the{" "}
+            <PreviewLink imageUrl="organizer-latest-build.png">
+              top option
+            </PreviewLink>{" "}
+            ( latest build )
+          </li>
+          <li>
+            click{" "}
+            <PreviewLink imageUrl="organizer-distribute.png">
+              Distribute app
+            </PreviewLink>{" "}
+            on the right
+          </li>
+          <li>
+            Select{" "}
+            <PreviewLink imageUrl="testflight-internal-only.png">
+              TestFlight Internal Only
+            </PreviewLink>
+          </li>
+          <li>
+            <PreviewLink imageUrl="testflight-internal-only-distribute.png">
+              Distribute
+            </PreviewLink>
+          </li>
         </ul>
         <h3 className="font-bold text-2xl" id="deployment-stage-android">
           Android
@@ -336,19 +362,52 @@ function App() {
             </PreviewLink>{" "}
             ( or ⇧⌘K )
           </li>
-          <li>same menu, build ( or ⌘B )</li>
+          <li>
+            same menu, <PreviewLink imageUrl="build.png">build</PreviewLink> (
+            or ⌘B )
+          </li>
           <InfoPanel>
             The build ( and archive ) may take a short while, between 3 to 7
             minutes or so
           </InfoPanel>
-          <li>Once build is done, same menu, archive</li>
           <li>
-            Once archive is done, an organizer window should pop up, if it
-            doesn’t, go to the top menu, Window → Organizer ( or ⎇⇧⌘O )
+            Once build is done, same menu,{" "}
+            <PreviewLink imageUrl="archive.png">archive</PreviewLink>
           </li>
-          <li>Select the top option ( latest build )</li>
-          <li>click Distribute app on the right</li>
-          <li>Select TestFlight & App Store</li>
+          <li>
+            Once archive is done, an{" "}
+            <PreviewLink imageUrl="organizer.png">organizer</PreviewLink> window
+            should pop up, if it doesn’t, go to the top menu,{" "}
+            <PreviewLink imageUrl="organizer-menu.png">
+              Window → Organizer
+            </PreviewLink>
+            ( or ⎇⇧⌘O )
+          </li>
+          <li>
+            Select the{" "}
+            <PreviewLink imageUrl="organizer-latest-build.png">
+              top option
+            </PreviewLink>{" "}
+            ( latest build )
+          </li>
+          <li>
+            click{" "}
+            <PreviewLink imageUrl="organizer-distribute.png">
+              Distribute app
+            </PreviewLink>{" "}
+            on the right
+          </li>
+          <li>
+            Select{" "}
+            <PreviewLink imageUrl="test-flight-and-appstore.png">
+              TestFlight & App Store
+            </PreviewLink>
+          </li>
+          <li>
+            <PreviewLink imageUrl="testflight-internal-only-distribute.png">
+              Distribute
+            </PreviewLink>
+          </li>
           <li>
             <span>
               once done, go to{" "}
@@ -362,7 +421,11 @@ function App() {
               </a>
             </span>
           </li>
-          <li>Apps → Validit.ai</li>
+          <li>
+            <PreviewLink imageUrl="appstore-validitapp.png">
+              Apps → Validit.ai
+            </PreviewLink>
+          </li>
           <li>Left menu → Plus button where it says iOS app</li>
           <li>Enter the version number you just built.</li>
           <li>scroll down to the build section</li>
@@ -404,8 +467,22 @@ function App() {
             </span>
           </li>
           <li>
-            Apps → Validit → Left navigation menu → Production → Create new
-            release → Upload aab from
+            <PreviewLink imageUrl="google-console-apps.png">
+              Apps → Validit
+            </PreviewLink>{" "}
+            →{" "}
+            <PreviewLink imageUrl="google-console-production.png">
+              Left navigation menu → Production
+            </PreviewLink>{" "}
+            →{" "}
+            <PreviewLink imageUrl="google-console-new-release.png">
+              Create new release
+            </PreviewLink>{" "}
+            →{" "}
+            <PreviewLink imageUrl="google-console-upload-build.png">
+              Upload aab
+            </PreviewLink>{" "}
+            from
             validit-app/android/app/build/outputs/bundle/prodRelease/app-prod-release.aab
           </li>
           <li>full rollout</li>
