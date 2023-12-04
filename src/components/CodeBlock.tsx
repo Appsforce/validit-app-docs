@@ -2,18 +2,12 @@ import { ClipboardIcon } from "@heroicons/react/24/outline";
 import cx from "classnames";
 import React from "react";
 interface Props {
-  copy?: boolean;
   copyText?: string;
   children: React.ReactNode;
   className?: string;
 }
 
-export const CodeBlock = ({
-  copy = true,
-  copyText,
-  children,
-  className,
-}: Props) => {
+export const CodeBlock = ({ copyText, children, className }: Props) => {
   return (
     <code
       className={cx(
@@ -22,7 +16,7 @@ export const CodeBlock = ({
       )}
     >
       <div>{children}</div>
-      {copy && (
+      {copyText && (
         <button
           className="ml-auto"
           onClick={() => {

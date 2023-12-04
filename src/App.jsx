@@ -180,9 +180,7 @@ function App() {
         </h2>
         <ul className="list-decimal list-inside space-y-2">
           <li>
-            <CodeBlock copy={false}>
-              $ npm i YOUR_MODULE --legacy-peer-deps
-            </CodeBlock>
+            <CodeBlock>$ npm i YOUR_MODULE --legacy-peer-deps</CodeBlock>
           </li>
           <li>
             <CodeBlock copyText="cd ios && pod install">
@@ -222,11 +220,11 @@ function App() {
             Replace the binah sdk version in the package.json file with the new
             one
             <div className="py-2 space-y-2">
-              <CodeBlock copy={false}>
+              <CodeBlock>
                 {`"binah-react-native-sdk":"file:Binah_ReactNative_SDK_4.12.1.tar"`}
               </CodeBlock>
               <ArrowsUpDownIcon className="w-6" />
-              <CodeBlock copy={false}>
+              <CodeBlock>
                 {`"binah-react-native-sdk": "file:NEW_FILE_NAME",`}
               </CodeBlock>
             </div>
