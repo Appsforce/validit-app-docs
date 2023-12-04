@@ -1,6 +1,10 @@
 import React from "react";
 import Collapse from "./Collapse";
-import { ArrowLeftOnRectangleIcon } from "@heroicons/react/24/outline";
+import {
+  ArrowLeftOnRectangleIcon,
+  QuestionMarkCircleIcon,
+} from "@heroicons/react/24/outline";
+import { useHelpModal } from "./HelpModal";
 
 const NAV_ITEMS = [
   {
@@ -75,6 +79,7 @@ const NAV_ITEMS = [
 ];
 
 export default function Drawer() {
+  const { open } = useHelpModal();
   return (
     <div className="fixed left-0 h-screen bg-slate-100 w-52 p-2 flex flex-col">
       <h1 className="font-bold text-xl flex-0">Validit app docs</h1>
@@ -109,6 +114,13 @@ export default function Drawer() {
           );
         })}
       </ul>
+      <button
+        onClick={open}
+        className="self start flex items-center justify-between w-full px-2 hover:bg-slate-300 rounded-lg py-1 mb-1"
+      >
+        Help
+        <QuestionMarkCircleIcon className="w-6" />
+      </button>
       <button
         onClick={() => {
           localStorage.removeItem("isAuth");

@@ -1,8 +1,7 @@
 import React from "react";
 import { PASS_KEY } from "../constants";
-type Props = {};
 
-export default function AuthModal({}: Props) {
+export default function AuthModal() {
   const [inputValue, setInputValue] = React.useState("");
   const handleSubmit = (
     e: React.FormEvent<HTMLFormElement> | React.FormEvent<HTMLButtonElement>

@@ -1,21 +1,29 @@
 import { ArrowsUpDownIcon } from "@heroicons/react/24/outline";
+import React, { useEffect } from "react";
+import AuthModal from "./components/AuthModal";
 import { CodeBlock } from "./components/CodeBlock";
 import Drawer from "./components/Drawer";
 import { InfoPanel } from "./components/InfoPanel";
-import AuthModal from "./components/AuthModal";
-import { useEffect } from "react";
-import React from "react";
+import PreviewLink from "./components/PreviewLink";
+import PreviewModal from "./components/PreviewModal";
+import HelpModal, { useHelpModal } from "./components/HelpModal";
 function App() {
   // eslint-disable-next-line no-undef
   const [isAuthenticated, setIsAuthenticated] = React.useState(false);
+  const { open } = useHelpModal();
 
   useEffect(() => {
     // eslint-disable-next-line no-undef
     const isAuth = localStorage.getItem("isAuth");
+    const isFirstLaunch = localStorage.getItem("didFirstLaunch");
+    if (isFirstLaunch === null) {
+      localStorage.setItem("didFirstLaunch", true);
+      open();
+    }
     if (isAuth) {
       setIsAuthenticated(true);
     }
-  }, []);
+  }, [open]);
 
   if (!isAuthenticated) return <AuthModal />;
   return (
@@ -39,7 +47,7 @@ function App() {
           <li>
             Place{" "}
             <a
-              className="underline"
+              className="underline text-link"
               href="https://drive.google.com/file/d/1KzRMgXxFDZ-21FRAorc3qQEGkd3riW-L/view?usp=sharing"
               target="_blank"
               rel="noreferrer"
@@ -51,7 +59,7 @@ function App() {
           <li>
             Place{" "}
             <a
-              className="underline"
+              className="underline text-link"
               href="https://drive.google.com/drive/folders/1wnDIjDa6RqsjKf9W8_jEUVSzs8Rmjk97?usp=drive_link"
               target="_blank"
               rel="noreferrer"
@@ -87,7 +95,7 @@ function App() {
                 href="https://developer.apple.com/account/resources/certificates/list"
                 target="_blank"
                 rel="noreferrer"
-                className="underline"
+                className="underline text-link"
               >
                 Apple developer console
               </a>{" "}
@@ -101,22 +109,57 @@ function App() {
           </li>
           <li>open in ios/xcode validitApp.xcworkspace with xcode. </li>
           <li>
-            leftmost file explorer → validitApp → Signing and Capabilities →
-            Signing Debug, Release and Staging → Team → Validit Evaluations
-            Solutions LTD.
+            <PreviewLink imageUrl="menu-leftmost.png">
+              leftmost file explorer
+            </PreviewLink>{" "}
+            →{" "}
+            <PreviewLink imageUrl="menu-leftmost-validitapp.png">
+              validitApp
+            </PreviewLink>{" "}
+            →{" "}
+            <PreviewLink imageUrl="signing-and-capabilities.png">
+              Signing and Capabilities
+            </PreviewLink>{" "}
+            → Signing Debug, Release and Staging → Team →{" "}
+            <PreviewLink imageUrl="signing-validit-team.png">
+              Validit Evaluations Solutions LTD
+            </PreviewLink>
           </li>
           <li>
-            Bundle identifier → Debug - random value, Release and staging
-            -org.reactjs.native.example.validitApp
+            <PreviewLink imageUrl="bundle-debug.png">
+              Bundle identifier → Debug
+            </PreviewLink>{" "}
+            - random value,{" "}
+            <PreviewLink imageUrl="bundle-prod.png">
+              Release and staging
+            </PreviewLink>{" "}
+            - org.reactjs.native.example.validitApp
           </li>
           <li>
-            leftmost file explorer → pods → second explorer → EXConstants -
-            EXConstants → set team to Valid.it Evaluations Solutions LTD
+            <PreviewLink imageUrl="menu-leftmost.png">
+              leftmost file explorer
+            </PreviewLink>{" "}
+            → <PreviewLink imageUrl="pods.png">Pods</PreviewLink> →{" "}
+            <PreviewLink imageUrl="pods-second.png">
+              second explorer
+            </PreviewLink>{" "}
+            →{" "}
+            <PreviewLink imageUrl="ex-constants.png">
+              EXConstants - EXConstants
+            </PreviewLink>{" "}
+            → set team to{" "}
+            <PreviewLink imageUrl="ex-constants-team-validit.png">
+              Valid.it Evaluations Solutions LTD
+            </PreviewLink>
           </li>
           <li>Repeat step 6 but with React-Core-Accesability-Resources</li>
           <li>
-            in XCode top menu, where it says Any IOS device (arm64) select your
-            device
+            in XCode top menu, where it says{" "}
+            <PreviewLink imageUrl="any-ios-device.png">
+              Any IOS device (arm64)
+            </PreviewLink>{" "}
+            select{" "}
+            <PreviewLink imageUrl="my-device.png">your device</PreviewLink>
           </li>
           <li>Click the play button on the left</li>
         </ul>
@@ -146,7 +189,9 @@ function App() {
             </CodeBlock>
           </li>
           <li>
-            Xcode pops up an alert with two options, select read from disc
+            <PreviewLink imageUrl="xcode-popup.png">
+              Xcode pops up an alert with two options, select read from disc
+            </PreviewLink>
           </li>
           <li>Repeat step 6 - 9 from the installation section ( iOS )</li>
         </ul>
@@ -159,7 +204,7 @@ function App() {
             <span>
               download the new binah sdk file from the{" "}
               <a
-                className="underline"
+                className="underline text-link"
                 target="_blank"
                 rel="noreferrer"
                 href="https://binahai.sharefile.com/oauth/authorize?client_id=S91b5wNXMkpKqFTWBl4sCpAKs14Kc5vy&scope=&response_type=code&redirect_uri=https%3A%2F%2Fauth.sharefile.io%2Fsignin-sharefile&state=CfDJ8CFE4ppei_ZOq62VAV2OCKzxOtbZgB2r9ccCIuKcVPl0JuCa14vQplAfR4C9pYtEYr-grVaBKF1PhU6Tvhdax3pP5B66WQmfO-LG7OJ8wuxYY4qLVEFxz238VOWB6hIRiM_v4OiiCVuCmzlNLeGt2Zxe-HQIU1ykkHP_AJs5DInJaV6WFT7lIob3oWp2UCuK3Em9rsYajRuojz-znescxb4kmDPhcnNHQIbunmWCVUMli2qM9jNmLZZS1VKi6PUVMbPF7Dnhy8UMVramilgYLvxQhwnhIro3V6jS4jJy4cf4w7jQVUKFFRwUyOyrnnVew_vcH4eAhsZu8mOXwsCyByykZyz1NAQlLsI9iwDJfNgKsRXOyzb5bvXvrrcfIbKvzWRMKNsdOjvGLlnr8fiEpvj8PKEI2d0MVaQhda0FWm1eBU8IHw7mMKJ_NzSz3fBXZTUGmsuq8aQky10TjcLjaht-i-2khRFt9x47krL3Pm_TW-3aXphbApSBDAJrhwgliBg4j1iWQPFKXtE4b2cnJuoNrh8bAR5tqlIBpKxOkUTYHxmvrjKl4G1YRfPw3XyKFWQ1SifnfAwkc2qEQm0mSor64m2UGgYQrxnuMxo40wihAjHiJMQr7aWJOH19irfYlK47_HJRO5pmUytQgWA7_3slZdAezQc8HVVC1D4CUJA5lxEtYvuPMq29mlKr5DTnggqUmX8EaWRKh8TVLdyR0zr7cdk8NUBbk5unqOnbRlI4&subdomain=binahai#/Credentials"
@@ -201,20 +246,35 @@ function App() {
           </CodeBlock>
           <li>Open xcode</li>
           <li>
-            In the top section where it says validitApp → Any iOS Device
-            (arm64), replace validitApp to → validitApp - Staging
+            In the top section where it says validitApp →{" "}
+            <PreviewLink imageUrl="any-ios-device.png">
+              Any iOS Device (arm64)
+            </PreviewLink>
+            , replace validitApp to → validitApp - Staging
           </li>
           <InfoPanel variant="warning">
             In step 3, 4 and 5, make sure Any iOS Device (arm64) is selected and
             not a connected device
           </InfoPanel>
-          <li>in the top menu → Product → Clean build folder ( or ⇧⌘K )</li>
-          <li>same menu, build ( or ⌘B )</li>
+          <li>
+            in the top menu → Product →{" "}
+            <PreviewLink imageUrl="clean-build-folder.png">
+              Clean build folder
+            </PreviewLink>{" "}
+            ( or ⇧⌘K )
+          </li>
+          <li>
+            same menu, <PreviewLink imageUrl="build.png">build</PreviewLink> (
+            or ⌘B )
+          </li>
           <InfoPanel>
             The build ( and archive ) may take a short while, between 3 to 7
             minutes or so
           </InfoPanel>
-          <li>Once build is done, same menu, archive</li>
+          <li>
+            Once build is done, same menu,{" "}
+            <PreviewLink imageUrl="archive.png">archive</PreviewLink>
+          </li>
           <li>
             Once archive is done, an organizer window should pop up, if it
             doesn’t, go to the top menu, Window → Organizer ( or ⎇⇧⌘O )
@@ -258,14 +318,23 @@ function App() {
           </CodeBlock>
           <li>Open xcode</li>
           <li>
-            In the top section where it says validitApp → Any iOS Device
-            (arm64), replace validitApp to → validitApp - Prod
+            In the top section where it says validitApp →{" "}
+            <PreviewLink imageUrl="any-ios-device.png">
+              Any iOS Device (arm64)
+            </PreviewLink>{" "}
+            , replace validitApp to → validitApp - Prod
           </li>
           <InfoPanel variant="warning">
             In step 3, 4 and 5, make sure Any iOS Device (arm64) is selected and
             not a connected device.
           </InfoPanel>
-          <li>in the top menu → Product → Clean build folder ( or ⇧⌘K )</li>
+          <li>
+            in the top menu → Product →{" "}
+            <PreviewLink imageUrl="clean-build-folder.png">
+              Clean build folder
+            </PreviewLink>{" "}
+            ( or ⇧⌘K )
+          </li>
           <li>same menu, build ( or ⌘B )</li>
           <InfoPanel>
             The build ( and archive ) may take a short while, between 3 to 7
@@ -285,7 +354,7 @@ function App() {
               <a
                 href="https://appstoreconnect.apple.com/login"
                 target="_blank"
-                className="underline"
+                className="underline text-link"
                 rel="noreferrer"
               >
                 App store connect
@@ -327,7 +396,7 @@ function App() {
                 href="https://play.google.com/console/u/0/developers/6314761934093563030/app/4973843767571035107/app-dashboard?timespan=thirtyDays"
                 target="_blank"
                 rel="noreferrer"
-                className="underline"
+                className="underline text-link"
               >
                 Google play console
               </a>
@@ -351,6 +420,8 @@ function App() {
         </h3>
         TBW
       </div>
+      <PreviewModal />
+      <HelpModal />
     </div>
   );
 }
